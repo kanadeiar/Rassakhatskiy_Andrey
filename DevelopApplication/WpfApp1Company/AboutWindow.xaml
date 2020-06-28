@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfApp1Company.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1Company"
+        mc:Ignorable="d"
+        Title="Окно о программе" Height="400" Width="400" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" Loaded="AboutWindow_OnLoaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox TextWrapping="Wrap" Text="{StaticResource StringName}"/>
+        <Button x:Name="ButtonOk" Grid.Row="1" Content="OK" Width="200" Height="30"/>
+    </Grid>
+</Window>

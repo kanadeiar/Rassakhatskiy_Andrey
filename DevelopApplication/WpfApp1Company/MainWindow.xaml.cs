@@ -21,14 +21,14 @@ namespace WpfApp1Company
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Geekbrains _geekbrains;
         public MainWindow()
         {
             InitializeComponent();
         }
-
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            Geekbrains _geekbrains = new Geekbrains(10, 100);
+            _geekbrains = new Geekbrains(10, 100);
             GridMain.DataContext = _geekbrains;
 
             ButtonAdd.Click += delegate
@@ -42,27 +42,29 @@ namespace WpfApp1Company
                     return;
                 _geekbrains.DelCourse(select);
             };
-            ButtonAddStudent.Click += delegate
-            {
-                var stdn = new Student("Пупкин", "Вася", new DateTime(1990, 1, 1), 5);
-                _geekbrains.AddStudent( stdn );
-                ListBoxCourses.SelectedIndex = -1;
-                ListBoxCourses.SelectedIndex = 0;
-            };
-            ButtonDelStudent.Click += delegate
-            {
-                Student student = (Student) ListBoxStudents.SelectedItem;
-                if (student == null)
-                    return;
-                _geekbrains.DelStudent(student);
-                ListBoxCourses.SelectedIndex = -1;
-                ListBoxCourses.SelectedIndex = 0;
-            };
+            ButtonAddStudent.Click += OnButtonAddStudentOnClick;
+            ButtonAddStudent2.Click += OnButtonAddStudentOnClick;
+            ButtonDelStudent.Click += OnButtonDelStudentOnClick;
+            ButtonDeleteStudent2.Click += OnButtonDelStudentOnClick;
             ComboBoxCoursesStudent.SelectionChanged += delegate
             {
                 ListBoxCourses.SelectedIndex = ComboBoxCoursesStudent.SelectedIndex;
             };
         }
-
+        void OnButtonAddStudentOnClick(object sender, RoutedEventArgs e)
+        {
+            var stdn = new Student("Пупкин", "Вася", new DateTime(1990, 1, 1), 5);
+            _geekbrains.AddStudent(stdn);
+            ListBoxCourses.SelectedIndex = -1;
+            ListBoxCourses.SelectedIndex = 0;
+        }
+        void OnButtonDelStudentOnClick(object sender, RoutedEventArgs e)
+        {
+            Student student = (Student) ListBoxStudents.SelectedItem;
+            if (student == null) return;
+            _geekbrains.DelStudent(student);
+            ListBoxCourses.SelectedIndex = -1;
+            ListBoxCourses.SelectedIndex = 0;
+        }
     }
 }

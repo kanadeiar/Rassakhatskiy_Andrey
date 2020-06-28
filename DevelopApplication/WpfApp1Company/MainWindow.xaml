@@ -11,6 +11,8 @@
             <ToolBar FontSize="14">
                 <Button x:Name="ButtonAdd" Content="Добавить новый курс" Margin="3"/>
                 <Button x:Name="ButtonDelete" Content="Удалить выбранный курс" Margin="3"/>
+                <Button x:Name="ButtonAddStudent2" Content="Добавить ученика" Margin="3"/>
+                <Button x:Name="ButtonDeleteStudent2" Content="Удалить ученика" Margin="3"/>
             </ToolBar>
         </ToolBarPanel>
         <Grid x:Name="GridMain">
